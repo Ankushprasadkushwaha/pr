@@ -1,0 +1,112 @@
+:root {
+  --transition-animation-duration: 0.25s;
+  --bg-x: -25%;
+  --bg-y: -25%;
+}
+
+html,
+body {
+  height: 100%;
+  background: #030507;
+  display: flex;
+  flex-direction: row;
+  place-items: center;
+  place-content: center;
+}
+
+templates {
+  display: none;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  place-items: center;
+  place-content: center;
+}
+
+.countdown {
+  width: 500px;
+  max-width: 90vw;
+}
+
+.digit,
+.divider {
+  display: flex;
+  margin: 0 -10px;
+}
+.digit svg,
+.divider svg {
+  width: 100%;
+}
+.digit svg path:last-of-type,
+.divider svg path:last-of-type {
+  transform: scaleY(2.5) scaleX(0.4) !important;
+  filter: blur(20px) !important;
+}
+
+.digit {
+  transition: var(--transition-animation-duration) cubic-bezier(0, 0, 0, 0.97);
+}
+.digit.animate-transition {
+  transform: scale(1.1);
+  mix-blend-mode: plus-lighter;
+  filter: brightness(1.5) drop-shadow(2px 2px 14px #d1450e);
+}
+.digit.animate-transition path {
+  stroke: rgba(255, 106, 40, 0.95) !important;
+}
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: url("https://images.unsplash.com/photo-1475738198235-4b30fc20cff4?q=80&w=2876&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1;
+  transform: translateX(var(--bg-x)) translateY(var(--bg-y)) scale(1.5);
+  animation: blink 1s ease-out infinite alternate;
+}
+
+.shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: radial-gradient(ellipse, transparent 50%, #000);
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.1;
+  }
+  90% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
+.credits {
+  position: absolute;
+  font-family: sans-serif;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ffb37d;
+  text-shadow: 0 0px 8px #ca3c05;
+  font-size: 0.9rem;
+}
+.credits:not(:hover) {
+  opacity: 0.4;
+}
+.credits a {
+  color: #ffb37d;
+}
